@@ -1,6 +1,8 @@
 public class PilhaDinamica implements PilhaOperacoes {
 
+
     private No topo;
+    private int tamanho;
 
     private class No {
         int conteudo;
@@ -14,6 +16,7 @@ public class PilhaDinamica implements PilhaOperacoes {
 
     public PilhaDinamica() {
         topo = null;
+        tamanho = 0;
         System.out.println("Pilha Dinâmica Criada! ");
     }
 
@@ -31,18 +34,20 @@ public class PilhaDinamica implements PilhaOperacoes {
         No novo = new No(valor);
         novo.proximo = topo;
         topo = novo;
+        tamanho++;
         return valor;
     }
 
     @Override
     public  int desempilhar() {
-        System.out.println("Item(s) Removido(s)!");
         if (estaVazia()) {
             System.out.println("A Pilha Está Vazia!");
             return -1;
         }
         int valor = topo.conteudo;
         topo = topo.proximo;
+        tamanho--;
+        System.out.println("Item Removido: " + valor);
         return valor;
     }
 
@@ -50,6 +55,20 @@ public class PilhaDinamica implements PilhaOperacoes {
     public int topo() {
         if (estaVazia()) return  -1;
         return topo.conteudo;
+    }
+
+    @Override
+    public void mostrarTopo() {
+        if (estaVazia()) {
+            System.out.println("Pilha Vazia" );
+            return;
+        }
+        System.out.println("Topo: " + topo.conteudo );
+    }
+
+    @Override
+    public void quantidadeElemento() {
+        System.out.println("Quantidade de Elementos: " + tamanho);
     }
 
     @Override

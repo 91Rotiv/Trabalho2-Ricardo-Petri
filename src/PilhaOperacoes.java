@@ -6,6 +6,9 @@ public interface PilhaOperacoes  {
     void mostrar();
     boolean estaVazia();
     boolean estaCheia();
+    void mostrarTopo();
+    void quantidadeElemento();
+
 
 
 }

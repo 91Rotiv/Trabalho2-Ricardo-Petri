@@ -28,12 +28,14 @@ public class PilhaSimples implements PilhaOperacoes{
     }
 
     public int desempilhar() {
-        System.out.println("Iten(S) Removido(S)");
+
         if (estaVazia()) {
             System.out.println("A Pilha Está vazia! ");
             return -1;
         }
-        return itens[inicio--];
+        int valorR = itens[inicio--];
+        System.out.println("Item Removido: " + valorR);
+        return valorR;
     }
 
     public int topo() {
@@ -42,7 +44,25 @@ public class PilhaSimples implements PilhaOperacoes{
     }
 
     @Override
+    public void mostrarTopo() {
+        if (estaVazia()) {
+            System.out.println("Pilha Vazia");
+            return;
+        }
+        System.out.println("Topo : " + itens[inicio]);
+    }
+
+    @Override
+    public void quantidadeElemento() {
+        System.out.println("Quantidade de Elementos: " + (inicio + 1));
+    }
+
+    @Override
     public void mostrar() {
+        if (estaVazia()) {
+            System.out.println("A Pilha Está Vazia!");
+            return;
+        }
         for (int i = inicio; i >= 0; i--) {
             System.out.println("Itens na Pilha: " + itens[i]);
         }
